@@ -1,0 +1,8 @@
+// HYDAT database location
+/home/alejandro/Documents/data/hydat/tables/
+// Output directory
+/home/alejandro/Documents/cpp/output/
+// STATION_NUMBER variable
+11AF001,DLY_LEVELS
+01AF003,DLY_FLOWS
+01AF006,SED_DLY_SUSCON
