@@ -13,8 +13,10 @@ if [ "$variable" == "DLY_FLOWS" ]; then
 	units="(m^3 /s)"
 elif [ "$variable" == "DLY_LEVELS" ]; then
 	units="(m)" 
-else
+elif [ "$variable" == "SED_DLY_SUSCON" ]; then
 	units="(mg/l)"
+else
+	units=""
 fi
 
 # Plotting with gnuplot
