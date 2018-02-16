@@ -6,5 +6,22 @@ Although HYDAT is easy manipulable in MS Windows systems, Linux/UNIX users can n
 
 How to use HYDAText
 1) Download the source code.
-2) Run the makefile as make to compile the source code. The makefile will produce the executable HYDAText. Excecute make clean to remove leaveover files after compilation.
-3)
+2) Run the makefile as 'make' to compile the source code located in 'src/'. The makefile will produce the executable HYDAText. Execute make clean to remove leave-over files after compilation.
+3) (OPTIONAL) Create a working directory. 'test' is a example working directory.
+4) Within the the working directory, create the file HYDAT.in, whic contain:
+- Line 1: Comment
+- Line 2: Directory path of HYDAT database location
+- Line 3: Comment
+- Line 4: Output directory (Usually working directory)
+- Line 5: Comment
+- line 6: STATION_NUMBER, VARIABLE1, ..., VARIABLE3
+- .
+- .
+- .
+- line n: STATION_NUMBER, VARIABLE1, ..., VARIABLE3
+Note that VARIABLEi can be: DLY_FLOWS, DLY_LEVELS, SED_DLY_SUSCON
+5) Run HYDAText in the console as e.g. './HYDAText test'
+
+HYDAText output and visualization
+The model will produce *.csv files named as 'STATION_NUMBER_VARIABLEi.csv'
+The script 'plotTS.sh' in 'plot/' can be used to plot the time series in *.csv file in GNUPLOT. To plot, type './plotTS.sh ../test/01AF003_DLY_FLOWS.csv'. this will produce a *.eps file e.g. 01AF003_DLY_FLOWS.eps within e.g. 'test/'.
