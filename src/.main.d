@@ -1,1 +1,1 @@
-src/main.o: src/main.cpp src/HYDAText.h
+src/main.o: src/main.cpp lib/HYDAText.h

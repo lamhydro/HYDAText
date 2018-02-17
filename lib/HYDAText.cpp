@@ -4,7 +4,7 @@
 #include <sstream>
 #include <vector>
 
-#include "HYDAText.h"
+//#include "HYDAText.h"
 
 using namespace std;
 
@@ -56,7 +56,6 @@ int getNO_DAYSCol(string &VARIA){
 /*
 Record station information
 */
-//int statInfo(string &STATION_NUMBER){
 int statInfo(string &HYDATdir, string &outdir, vector<string> &STATION_NUMBER){
 
   fstream file(HYDATdir+"STATIONS.csv", ios::in);
@@ -103,10 +102,11 @@ int statInfo(string &HYDATdir, string &outdir, vector<string> &STATION_NUMBER){
     file.seekg(0);
   }
   return 0;
-
 }
 
-
+/*
+Extract station daily time series
+*/
 int extractTS(string &HYDATdir, string &outdir, string &STATION_NUMBER, string &VARIA) {
 
   fstream file(HYDATdir+VARIA+".csv", ios::in);
@@ -190,6 +190,48 @@ int extractTS(string &HYDATdir, string &outdir, string &STATION_NUMBER, string &
           fileout << *ii << "\n";
         }
       }
+  }
+  return 0;
+}
+
+/*
+Extract station regulation information.
+*/
+int read_STN_REGULATION(string &HYDATdir, string &STATION_NUMBER, string &YEAR_FROM, string &YEAR_TO, int &REGULATED){
+
+  fstream file(HYDATdir+"STN_REGULATION.csv", ios::in);
+  if(!file.is_open()){
+    cout << "File not found!\n";
+    return 1;
+  }
+
+  string csvLine;
+  // Get header
+  getline(file, csvLine);
+  while( getline(file, csvLine) ){
+  //for (size_t i = 0; i < 3; i++) {
+    //getline(file, csvLine);
+    istringstream csvStream(csvLine);
+    vector<string> csvColumn;
+    string csvElement;
+
+    getline(csvStream, csvElement, ',');
+    if (csvElement.compare(STATION_NUMBER) == 0){
+      csvColumn.push_back(csvElement);
+      while( getline(csvStream, csvElement, ',') ){
+        csvColumn.push_back(csvElement);
+      }
+      int j = 0;
+      for(vector<string>::iterator i = csvColumn.begin(); i != csvColumn.end(); ++i ){
+        if (j == 1) YEAR_FROM = *i;
+        if (j == 2) YEAR_TO = *i;
+        if (j == 3) REGULATED = atoi((*i).c_str());
+
+        j++;
+      }
+      //cout << STATION_NUMBER << ' ' <<REGULATED << '\n';
+      break;
+    }
   }
   return 0;
 }

@@ -36,4 +36,9 @@ Fetch time series
 */
 int extractTS(string &HYDATdir, string &outdir, string &STATION_NUMBER, string &VARIA);
 
+/*
+Extract station regulation information.
+*/
+int read_STN_REGULATION(string &HYDATdir, string &STATION_NUMBER, string &YEAR_FROM, string &YEAR_TO, int &REGULATED);
+
 #endif // ADD_HEADER

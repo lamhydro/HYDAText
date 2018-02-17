@@ -35,7 +35,7 @@ EXTRA_CFLAGS           = -fdata-sections -ffunction-sections
 EXTRA_LDFLAGS          =
 
 # Specify the include dirs, e.g. "-I/usr/include/mysql -I./include -I/usr/include -I/usr/local/include".
-INCLUDE                =
+INCLUDE                = -I./lib
 
 # The C Preprocessor options (notice here "CPP" does not mean "C++"; man cpp for more info.). Actually $(INCLUDE) is included.
 CPPFLAGS               = -Wall -Wextra    # helpful for writing better code (behavior-related)
@@ -45,7 +45,7 @@ LDFLAGS                =
 
 # The directories in which source files reside.
 # If not specified, all subdirectories of the current directory will be added recursively.
-SRCDIRS               := ./src
+SRCDIRS               := ./lib ./src
 
 # OS specific.
 EXTRA_CFLAGS_MACOS     =

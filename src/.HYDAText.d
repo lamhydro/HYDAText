@@ -1,1 +1,2 @@
-src/HYDAText.o: src/HYDAText.cpp src/HYDAText.h
+/home/alejandro/Documents/cpp/HYDAText/src/HYDAText.o: /home/alejandro/Documents/cpp/HYDAText/src/HYDAText.cpp \
+ /home/alejandro/Documents/cpp/HYDAText/src/HYDAText.h
